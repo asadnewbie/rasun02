@@ -20,7 +20,7 @@ bot(
 	async (message, match) => {
 		match = match || message.reply_message.text
 		if (!match && match !== 'list')
-			return await message.sendMessage('*Example : plugin url*')
+			return await message.sendMessage('*Example :*\nplugin url\nplugin list')
 		if (match == 'list') {
 			const plugins = await getPlugin()
 			if (!plugins) return await message.sendMessage(`*Plugins not installed*`)
@@ -70,7 +70,10 @@ bot(
 		type: 'misc',
 	},
 	async (message, match) => {
-		if (!match) return await message.sendMessage('*Example : remove mforward*')
+		if (!match)
+			return await message.sendMessage(
+				'*Example :*\nremove mforward\nremove all'
+			)
 		if (match == 'all') {
 			await delPlugin()
 			return await message.sendMessage(
